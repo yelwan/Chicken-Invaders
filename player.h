@@ -7,17 +7,17 @@
 class Player: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
-    int score;
+
     QGraphicsTextItem *healthText= new QGraphicsTextItem();
     QGraphicsTextItem *scoreText = new QGraphicsTextItem();
 public:
+    int score;
     int health;
     Player();
     ~Player();
     void initializeText(QGraphicsTextItem* textItem, const QString& text, const QColor& color, int x, int y,int T);
 
     void decrease();
-
 
     void updateText();
 public:

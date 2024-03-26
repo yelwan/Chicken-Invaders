@@ -6,6 +6,7 @@
 #include "enemy.h"
 #include <QMessageBox>
 #include "GameOver.h"
+#include "QGraphicsView"
 Player::Player() {
     health = 3;
     score = 0;
@@ -48,6 +49,7 @@ void Player::keyPressEvent(QKeyEvent *event) {
             scene()->addItem(bullet);
         }
     }
+
     updateText();
 }
 
@@ -73,5 +75,4 @@ void Player::increase() {
     score++;
     scoreText->setPlainText("Score: " + QString::number(score));
 }
-
 

@@ -5,7 +5,10 @@
 #include <enemy.h>
 #include <player.h>
 #include <QMediaPlayer>
+#include <QtMultimedia>
+#include <QAudioOutput>
 #include <QUrl>
+#include <QAudio>
 Bullet::Bullet(Player *player) :QObject(), QGraphicsPixmapItem()   {
     // Constructor implementation
     // Set the pixmap for the bullet
@@ -29,9 +32,11 @@ void Bullet::move() {
             scene()->removeItem(this);
             delete colliding_items[i];
             delete this;
+            QAudioOutput *themeoutput = new QAudioOutput();
+            themeoutput->setVolume(60);
             QMediaPlayer* bulletSound = new QMediaPlayer();
-            bulletSound->setMedia(QUrl::fromLocalFile("/Users/daliakadry/Downloads/laser.png"));
-            bulletSound->setVolume(50); // Adjust volume if necessary
+            bulletSound->setAudioOutput(themeoutput);
+            bulletSound->setSource(QUrl("/Users/daliakadry/Downloads/Chicken.mp3"));
             bulletSound->play();
             return;
         }

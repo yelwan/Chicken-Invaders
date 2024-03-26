@@ -15,6 +15,8 @@ public:
     explicit gameover(QWidget *parent = nullptr);
     ~gameover();
 
+private slots:
+
 private:
     Ui::gameover *ui;
 };
